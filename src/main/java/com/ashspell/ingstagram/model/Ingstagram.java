@@ -1,4 +1,4 @@
-package com.ashspell.memo.model;
+package com.ashspell.ingstagram.model;
 
 import java.sql.Date;
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "com.ahspell.ingstagram.dao.IngstagramDAO">
+ 	<insert id = "insertUser" parameterType = "map">
+ 		INSERT (
+ 			`id`
+ 			,`loginid`
+ 			,`password`
+ 			,`email`
+ 			,`name`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		) value (
+ 			#{id}
+ 			,#{loginid}
+ 			,#{password}
+ 			,#{email}
+ 			,#{name}
+ 			,now()
+ 			,now()
+ 		)
+ 	</insert>
+ 
+ 
+ 
+ 
+ </mapper>

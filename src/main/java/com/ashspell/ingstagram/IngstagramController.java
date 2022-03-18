@@ -1,4 +1,4 @@
-package com.ashspell.memo;
+package com.ashspell.ingstagram;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -33,7 +33,14 @@
 	</div>
 	
 	<script>
-		$(document).ready
+		$(document).ready(function(){
+			$("#loginBtn").on("click",function(){
+				
+				
+				
+			});
+			
+		});
 	
 	</script>
 </body>
