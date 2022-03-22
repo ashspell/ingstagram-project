@@ -13,6 +13,12 @@
 <link rel = "stylesheet" href = "/static/css/style.css" type = "text/css">
 </head>
 <body>
+	<div id = "wrap">
 	
+	
+	
+	
+	
+	</div>
 </body>
 </html>

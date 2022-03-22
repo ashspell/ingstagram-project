@@ -22,7 +22,9 @@ public interface IngstagramDAO {
 			@Param("loginid") String loginid,
 			@Param("password") String password);
 	
-	public int selectCountByloginId(@Param("loginid")String loginid)
+	public int selectCountByloginId(@Param("loginid")String loginid);
+		
+	
 	
 	}
 

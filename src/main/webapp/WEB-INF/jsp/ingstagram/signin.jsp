@@ -17,16 +17,19 @@
 		
 		<c:import url = "/WEB-INF/jsp/include/header.jsp"></c:import>
 		
-		<section class ="justify-content-center">
-			<div>
-				<input type = "text" class ="form-control" placeholder ="아이디">
-				<input type = "password" class = "form-control" placeholder = "비밀번호">
-				<button type = "submit"  id = "loginBtn" class = "form-control btn btn-block btn-info">로그인</button> 			
+	<section>
+			
+			<div class = "join-box">
+				<input type = "text" id = "loginIDInput" class = "form-control mt-3" placeholder = "아이디">
+				<input type = "password" id = "passwordInput"class = "form-control mt-3" placeholder = "비밀번호">
+				<button type = "submit" id = "loginBtn" class = "form-control btn btn-info btn-block mt-3">로그인</button>		
+				
+				<div class = "text-center mt-2">
+					<a href = "/ingstagram/signup_view">회원가입</a>
+				</div>
 			</div>
 			
-			<div class = "text-center">
-				<a href = "/ingstagram/signup">회원가입</a>
-			</div>
+		
 		</section>
 		
 		<c:import url = "/WEB-INF/jsp/include/footer.jsp"></c:import>
@@ -35,9 +38,37 @@
 	<script>
 		$(document).ready(function(){
 			$("#loginBtn").on("click",function(){
+				let loginid  = $("#loginIDInput").val();
+				let password = $("#passwordInput").val();
 				
+				if(loginid == "") {
+					alert("아이디를 입력하세요");
+					return;
+				}
 				
+				if(password == "") {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
 				
+				$.ajax({
+					type : "post",
+					url : "/ingstagram/signin",
+					data : {"loginid":loginid, "password":password},
+					success:function(data) {
+						if(data.result) == "success") {
+						 // location.href = "/ingstagram/list_view"
+						 alert("로그인 성공");
+						} else {
+							alert("아이디 혹은 비밀번호가 일치하지않습니다");
+						}
+					},
+					error:function() {
+						alert("로그인 에러");
+					}
+					
+					
+				});
 			});
 			
 		});
