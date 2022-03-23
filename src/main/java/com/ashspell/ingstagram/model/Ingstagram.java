@@ -10,6 +10,9 @@ public class Ingstagram {
 	private String name;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
+	
 	public int getId() {
 		return id;
 	}

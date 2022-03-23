@@ -34,8 +34,11 @@ private IngstagramDAO ingstagramDAO;
 	public boolean isDuplicateId(String loginid) {
 		
 		int count = ingstagramDAO.selectCountByloginId(loginid);
-		
+			
 		return (count != 0);
-		
 	}
+	
+	
+	
+
 }

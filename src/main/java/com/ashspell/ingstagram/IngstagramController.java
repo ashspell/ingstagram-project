@@ -19,4 +19,9 @@ public class IngstagramController {
 		return "ingstagram/signup";
 	}
 	
+	@GetMapping("/upload_view")
+	public String uploadview() {
+		return "ingstagram/upload";
+	}
+	
 }

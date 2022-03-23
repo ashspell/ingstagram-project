@@ -45,10 +45,49 @@
 		
 		$(document).ready(function(){
 			$("#signupBtn").on("click",function(){
+				let loginid = $("#loginInput").val();
+				let password = $("#passwordInput").val();
+				let confirmpassword = $("#confirmpassword").val();
+				let email = $("#emailInput").val();
+				let name = $("nameInput").val();
 			
+				if(loginid == "") {
+					alert("아이디를 입력하세요");
+					return;
+				}
+				if(password == "") {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+				if(confirmpassword == "") {
+					alert("비밀번호를 다시 입력해주세요");
+					return;
+				}
+				if(email == "") {
+					alert("이메일을 입력하세요");
+					return;
+				}
+				if(name == "") {
+					alert("이름을 입력하세요");
+					return;
+				}
 				
-	
-		
+				$.ajax({
+					type: "post",
+					url: "/ingstagram/signup",
+					data:{"loginid":loginid, "password":password, "confirmpassword":confirmpassword,
+						"email":email, "name":name},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("가입 성공");
+						}else{
+							alert("가입 실패");
+						}
+					},
+					error:function() {
+						alert("가입 에러");
+					}
+				});
 			});
 		});
 	
