@@ -1,11 +1,11 @@
-package com.ashspell.ingstagram.bo;
+package com.ashspell.ingstagram.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ashspell.ingstagram.common.EncryptUtils;
-import com.ashspell.ingstagram.dao.IngstagramDAO;
-import com.ashspell.ingstagram.model.Ingstagram;
+import com.ashspell.ingstagram.user.dao.IngstagramDAO;
+import com.ashspell.ingstagram.user.model.Ingstagram;
 
 @Service
 public class IngstagramBO {

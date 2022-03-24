@@ -23,7 +23,7 @@
  		)
  	</insert>
  	
- 	<select id = "selectUser" parameterType = "map">
+ 	<select id = "selectPostUser">
  		SELECT 
  		`id`
  		, `loginId`
@@ -35,6 +35,9 @@
  		
  		FROM
  			`ingstagram`
+ 		
+ 		ORDER BY `id` DESC
+ 	
  	</select>
  
  

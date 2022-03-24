@@ -1,4 +1,4 @@
-package com.ashspell.ingstagram.model;
+package com.ashspell.ingstagram.user.model;
 
 import java.sql.Date;
 

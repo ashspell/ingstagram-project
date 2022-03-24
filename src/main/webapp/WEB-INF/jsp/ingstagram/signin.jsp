@@ -57,8 +57,9 @@
 					data : {"loginid":loginid, "password":password},
 					success:function(data) {
 						if(data.result) == "success") {
-						 // location.href = "/ingstagram/list_view"
-						 alert("로그인 성공");
+							alert("로그인 성공");
+						  location.href = "/ingstagram/list"
+							
 						} else {
 							alert("아이디 혹은 비밀번호가 일치하지않습니다");
 						}

@@ -1,4 +1,4 @@
-package com.ashspell.ingstagram;
+package com.ashspell.ingstagram.user;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ashspell.ingstagram.bo.IngstagramBO;
+import com.ashspell.ingstagram.user.bo.IngstagramBO;
 
 @RestController
 @RequestMapping("/ingstagram")

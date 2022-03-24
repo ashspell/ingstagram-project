@@ -1,9 +1,9 @@
-package com.ashspell.ingstagram.dao;
+package com.ashspell.ingstagram.user.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.ashspell.ingstagram.model.Ingstagram;
+import com.ashspell.ingstagram.user.model.Ingstagram;
 
 
 
