@@ -12,6 +12,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href = "/static/css/style.css" type = "text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 </head>
 <body>
 	<div id  = "wrap">
@@ -19,15 +21,69 @@
 			
 			<section>
 				<div>
-					<input type = "text" class = "form-control">
+				
+				
+				
+			<a href = "#" class = "likeBtn" data-post-id = "#{ingstagram.id }"> <i class="bi bi-heart-fill"></i></a>
+						<label>좋아요</label> 
+					<input type = "text" id = "commentInput${ingstagram.id}"class = "form-control">
+						<button class = "btn btn-info commentBtn"data-post-id = "${ingstagram.id }">게시</button>
 					
-				
-				
-				
+					
 				</div>
 			</section>
 		
 		<c:import url = "WEB-INF/jsp/include/footer.jsp" />
 	</div>
 </body>
+
+<script>
+
+	$(document).ready(function(){
+		
+		$("#commentBtn").on("click", function(){
+			
+			let postId = $(this).data("post-id");
+			let comment = $("#commentInput" + postId).val();
+			
+			alert(postId + " " + comment);
+			
+			if(comment == "") {
+				alert ("댓글을 입력하세요");
+				return;
+			}
+			
+			
+			
+			$.ajax({
+				type: "post",
+				url:"/ingstagram/list",
+				data: {"id":id,"comment":comment},
+				success:function(data) {
+					location.reload();
+				}else {
+					alert("댓글 올리기 실패");
+				},
+				error() {
+					alert("댓글 에러");
+				}
+				
+				
+				
+			});
+		});
+		
+		$(".likeBtn").on("click", function(e){
+			
+			e.preventDefault();
+			
+			let postid = $(this).data("post-id");
+			alert("좋아요" + postid);
+			
+		});
+	});
+
+
+
+</script>
 </html>

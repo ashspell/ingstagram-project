@@ -25,8 +25,6 @@ public class PostIngstagramController {
 	
 	public String signout(HttpServletRequest request) {
 			
-			//로그아웃
-			// 세션에 저장한 사용자 정보 지우기
 		
 		HttpSession session = request.getSession();
 		
