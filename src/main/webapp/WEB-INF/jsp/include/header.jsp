@@ -13,7 +13,7 @@
 </head>
 <body>
 	<header>
-			<div class = "bg-secondary">
+			<div class = "bg-secondary d-flex form-control">
 				<h3>INGSTAGRAM</h3>
 					<div class = "justify-content-end">
 						<label>새로 올리기<button type = "submit" class = "btn btn-secondary">+</button></label>

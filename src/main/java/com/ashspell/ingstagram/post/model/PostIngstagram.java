@@ -6,8 +6,8 @@ public class PostIngstagram {
 	
 	private int id;
 	private String imagePath;
-	private String title;
 	private String content;
+	private String userName;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -25,17 +25,20 @@ public class PostIngstagram {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
