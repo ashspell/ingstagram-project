@@ -23,9 +23,21 @@
 			, now()
 		)
 		
-		
-		
-	
 	</insert>
 
+
+	<select id = "selectCommentList" parameterType = "int"
+	resultType = "com.ashspell.ingstagram.post.comment.model.Comment">
+		SELECT
+			`id`
+			, `postId`
+			, `userId`
+			, `userName`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM 
+			`ingstagram`
+	
+	</select>
 </mapper>

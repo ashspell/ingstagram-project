@@ -37,13 +37,13 @@
 				</div>
 
 				
-					<c:forEach var="post" items="${postList }" >
+					<c:forEach var="postDetail" items="${postList }" >
 				<!--  피드  -->
 				<div class="card border rounded mt-3">
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
 						<div>
-							${ingstagram.userName }
+							${postDetail.PostIngstagram.userName }
 						</div>
 						<div class="more-icon" >
 							<a class="text-dark" href="#"> 
@@ -55,20 +55,31 @@
 					</div>
 					<!--이미지 -->
 					<div>
-						<img src="${ingstagram.imagePath }" class="w-100 imageClick">
+						<img src="${PostIngstagram.imagePath }" class="w-100 imageClick">
 					</div>
 					
 					<!-- 좋아요 -->
 					<div class="m-2">
+						<c:choose>
+							<c:when test="${postDetail.like }">
+								<%-- 좋아요 빨갛고 가득찬 하트 --%>
+								<i class="bi bi-heart-fill text-danger"></i>
+							</c:when>
+							<c:otherwise>
+								<%-- 좋아요 아닌 비어있는 하트 --%>
+								<a href="#" class="likeBtn" data-post-id="${PostIngstagram.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
+							</c:otherwise>
+							
 						
-						<a href="#" class="likeBtn" data-post-id="${ingstagram.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
+						</c:choose>
+						<a href="#" class="likeBtn" data-post-id="${PostIngstagram.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
 						
 						<span class="middle-size ml-1"> 좋아요 11개 </span>
 					</div>
 					
 					<!--  content -->
 					<div class="middle-size m-2">
-						<b>${ingstagram.userName }</b> ${ingstagram.content }
+						<b>${PostIngstagram.userName }</b> ${PostIngstagram.content }
 					</div>
 					
 					<!--  댓글 -->
@@ -84,22 +95,19 @@
 						<!--  댓글  -->
 						<div class="middle-size m-2">
 							
+							<c:forEach var = "comment" items = "${postDetail.commentList }">							
 							<div class="mt-1">
-								<b>바다</b> 우왁 거기가 어딘가여?
+								<b>${comment.userName }</b> ${comment.content }
 							</div>
-							<div class="mt-1">
-								<b>신보람</b> 혼자 가니 좋냐?
-							</div>
-							<div class="mt-1">
-								<b>남라</b> 냠냠
-							</div>
+							</c:forEach>
+
 						</div>
 						<!--  댓글  -->
 						
 						<!-- 댓글 입력 -->
 						<div class="d-flex mt-2 border-top">
-							<input type="text" class="form-control border-0" id="commentInput${ingstagram.id }">
-							<button class="btn btn-info ml-2 commentBtn" data-post-id="${ingstagram.id }">게시</button>
+							<input type="text" class="form-control border-0" id="commentInput${postDetail.PostIngstagram.id }">
+							<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.PostIngstagram.id }">게시</button>
 						</div>
 						<!-- 댓글 입력 -->
 					</div>
@@ -107,18 +115,60 @@
 				</div>
 				</c:forEach>		
 			</div>	
-					
 		</section>
-		
-		<c:import url = "/WEB-INF/jsp/include/footer.jsp" />
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
-</body>
+
 
 <script>
 
 	$(document).ready(function(){
 		
-		$("#commentBtn").on("click", function(){
+		
+
+		$("#uploadBtn").on("click", function() {
+			
+			let content = $("#contentInput").val().trim();
+			
+			if(content == "") {
+				alert("내용을 입력하세요");
+				return ;
+			}
+			
+			// 파일 유효성 검사
+			// $("#fileInput")[0].files[0]
+			if($("#fileInput")[0].files.length == 0) {
+				alert("파일을 선택해주세요");
+				return;
+			}
+			
+			let formData = new FormData();
+			formData.append("content", content);
+			formData.append("file", $("#fileInput")[0].files[0] );
+			
+			$.ajax({
+				type:"post",
+				url:"/post/create",
+				data:formData,
+				enctype:"multipart/form-data",
+				processData:false,
+				contentType:false,
+				success:function(data) {
+					if(data.result == "success") {
+						location.reload();
+					} else {
+						alert("글쓰기 실패");
+					}
+				}, 
+				error:function() {
+					alert("글쓰기 에러");
+				}
+			});
+		});
+		
+		
+		
+		$(".commentBtn").on("click", function(){
 			
 			let postId = $(this).data("post-id");
 			let comment = $("#commentInput" + postId).val();
@@ -138,7 +188,7 @@
 				data: {"id":id,"comment":comment},
 				success:function(data) {
 					location.reload();
-				}else {
+				} else {
 					alert("댓글 올리기 실패");
 				},
 				error() {
@@ -178,7 +228,7 @@
 		});
 	});
 
-
-
 </script>
+
+</body>
 </html>

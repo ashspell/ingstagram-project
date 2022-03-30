@@ -25,14 +25,18 @@ public class PostIngstagramController {
 	
 	
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(Model model, HttpServletRequest request) {
 		
-		List<PostIngstagram> postList = postingstagramBO.getPostList();
+		HttpSession session = request.getSession();
+		int userId = (Integer) session.getAttribute("userId");
+		
+		List<PostIngstagram> postList = postingstagramBO.getPostList(userId);
 		
 		model.addAttribute("postList", postList);
 		
 		return "ingstagram/list";
 	}
+	
 	
 	@GetMapping("/sign_out")
 	
@@ -46,6 +50,7 @@ public class PostIngstagramController {
 		session.removeAttribute("userName");
 		
 		return "redirect:/user/signin_view";
+		
 		
 		}
 	}

@@ -17,7 +17,7 @@
 				<h3>INGSTAGRAM</h3>
 					<div class = "justify-content-end">
 						<label>새로 올리기<button type = "submit" class = "btn btn-secondary">+</button></label>
-						<label>로그아웃</label> <a href ="/ingstagram/signin_view">로그아웃</a>
+						 <a href ="/ingstagram/signin_view">로그아웃</a>
 					</div>
 			</div>
 	</header>

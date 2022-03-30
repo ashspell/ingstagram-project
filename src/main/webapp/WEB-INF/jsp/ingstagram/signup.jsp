@@ -19,13 +19,13 @@
 	<section>
 	<div class = "justify-content-center">
 		<h1>회원가입</h1>
-			<input type = "text"  id = "loginInput"class = "form-control" placeholder = "아이디">
-			<button type = "submit"  id = "confirmBtn"class = "btn btn-info">중복확인</button>
-			<input type = "password" id = "passwordInput"class = "form-control" placeholder = "비밀번호">
-			<input type = "password" id = "confirmpassword" class = "form-control" placeholder = "비밀번호 확인">
-			<input type = "text"  id = "emailInput"class = "form-control" placeholder = "이름">
-			<input type = "text" id = "nameInput" class = "form-control" placeholder = "이메일">
-			<button type = "submit" id = "signupBtn"class = "btn btn-info form-control">회원가입</button>
+			<input type = "text"  id = "loginInput"class = "form-control mt-3" placeholder = "아이디">
+			<button type = "submit"  id = "confirmBtn"class = "btn btn-info mt-3">중복확인</button>
+			<input type = "password" id = "passwordInput"class = "form-control mt-3" placeholder = "비밀번호">
+			<input type = "password" id = "confirmpassword" class = "form-control mt-3" placeholder = "비밀번호 확인">
+			<input type = "text"  id = "emailInput"class = "form-control mt-3" placeholder = "이름">
+			<input type = "text" id = "nameInput" class = "form-control mt-3" placeholder = "이메일">
+			<button type = "submit" id = "signupBtn"class = "btn btn-info form-control mt-3">회원가입</button>
 	</div>
 	</section>
 	
@@ -35,7 +35,17 @@
 		$(document).ready(function(){
 			$("#confirmBtn").on("click",function(){
 					
-				if("#confirmpassword" == "#passwordInput") {
+				if(password == "") {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+				if(confirmpassword == "") {
+					alert("비밀번호를 다시 입력해주세요");
+					return;
+				}
+				
+				
+				if(#{passwordInput} == #{confirmpassword}) {
 					alert("패스워드가 일치합니다");
 				} else {
 					alert("패스워드가 일치하지않습니다");
@@ -86,6 +96,7 @@
 					},
 					error:function() {
 						alert("가입 에러");
+						
 					}
 				});
 			});

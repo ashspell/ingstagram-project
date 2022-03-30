@@ -19,10 +19,10 @@
 		
 	<section>
 			
-			<div class = "join-box">
-				<input type = "text" id = "loginIDInput" class = "form-control mt-3" placeholder = "아이디">
-				<input type = "password" id = "passwordInput"class = "form-control mt-3" placeholder = "비밀번호">
-				<button type = "submit" id = "loginBtn" class = "form-control btn btn-info btn-block mt-3">로그인</button>		
+			<div>		
+					<input type = "text" id = "loginIDInput" class = "form-control mt-3" placeholder = "아이디">
+					<input type = "password" id = "passwordInput"class = "form-control mt-3" placeholder = "비밀번호">
+					<button type = "submit" id = "loginBtn" class = "form-control btn btn-info btn-block mt-3">로그인</button>		
 				
 				<div class = "text-center mt-2">
 					<a href = "/ingstagram/signup_view">회원가입</a>
@@ -34,10 +34,15 @@
 		
 		<c:import url = "/WEB-INF/jsp/include/footer.jsp"></c:import>
 	</div>
+
+			
 	
 	<script>
 		$(document).ready(function(){
-			$("#loginBtn").on("click",function(){
+			
+				$("#loginBtn").on("click", function() {
+				
+				
 				let loginid  = $("#loginIDInput").val();
 				let password = $("#passwordInput").val();
 				
@@ -57,8 +62,7 @@
 					data : {"loginid":loginid, "password":password},
 					success:function(data) {
 						if(data.result) == "success") {
-							alert("로그인 성공");
-						  location.href = "/ingstagram/list"
+						  location.href = "/ingstagram/list";
 							
 						} else {
 							alert("아이디 혹은 비밀번호가 일치하지않습니다");
