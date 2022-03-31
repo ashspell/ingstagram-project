@@ -46,7 +46,7 @@
 							${postDetail.PostIngstagram.userName }
 						</div>
 						<div class="more-icon" >
-							<a class="text-dark" href="#"> 
+							<a class="text-dark" href="#" data-toggle="modal" data-target="#moreModal"> 
 								<i class="bi bi-three-dots-vertical"></i> 
 							</a>
 						</div>
@@ -63,11 +63,11 @@
 						<c:choose>
 							<c:when test="${postDetail.like }">
 								<%-- 좋아요 빨갛고 가득찬 하트 --%>
-								<i class="bi bi-heart-fill text-danger"></i>
+								<a href = "#" class = "unlikeBtn" data-post-id = "${postDetail.post.id }"> <i class="bi bi-heart-fill text-danger"></i> </a>
 							</c:when>
 							<c:otherwise>
 								<%-- 좋아요 아닌 비어있는 하트 --%>
-								<a href="#" class="likeBtn" data-post-id="${PostIngstagram.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
+								<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
 							</c:otherwise>
 							
 						
@@ -118,6 +118,24 @@
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	
+	<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  			Launch demo modal
+		</button>
+
+<!-- Modal -->
+<div class="modal fade" id="moreModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+   		<a href = "#" >삭제하기</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>
@@ -208,7 +226,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"/ingstagram/like",
+				url:"/postingstagram/like",
 				data:{"postId":postId},
 				success:function(data) {
 					
@@ -225,6 +243,30 @@
 			});
 			
 			
+		});
+		
+		$(".unlikeBtn").on("click", function(e) {
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			$.ajax({
+				type:"get",
+				url:"/postingstagram/unlike",
+				data:{"postId":postId},
+				success:function(data) {
+					if(data.result == "success") {
+						location.reload();
+					}else{
+						alert("좋아요 취소 실패");
+					}
+				},
+				error:function() {
+					alert("좋아요 취소 에러");
+				}
+				
+				
+			});
 		});
 	});
 

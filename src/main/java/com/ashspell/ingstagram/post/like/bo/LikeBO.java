@@ -14,7 +14,10 @@ public class LikeBO {
 	public int addLike(int postId, int userId) {
 		return likeDAO.insertLike(postId, userId);
 	}
-
+	
+	public int unlike(int postId, int userId) {
+		return likeDAO.deleteLike(postId, userId);
+	}
 
 	public int getLikeCount(int postId) {
 		return likeDAO.selectLikeCount(postId);

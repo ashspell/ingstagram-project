@@ -1,6 +1,7 @@
 package com.ashspell.ingstagram.post;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ashspell.ingstagram.post.bo.PostIngstagramBO;
-import com.ashspell.ingstagram.post.model.PostIngstagram;
+
 
 @RestController
 @RequestMapping("/ingstagram/post")

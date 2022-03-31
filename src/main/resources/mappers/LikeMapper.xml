@@ -22,6 +22,22 @@
  	
  	</insert>
  	
+ 	<delete id = "deletelike" parameterType = "map">
+ 		DELETE FROM
+ 			`like`
+ 		WHERE
+ 			`postId` = #{postId}
+ 			AND `userId` = #{userId}
+ 	
+ 	
+ 	
+ 	</delete>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	<select id = "selectLikeCount" parameterType = "int" resultType = "int">
  		SELECT
  			count(1)

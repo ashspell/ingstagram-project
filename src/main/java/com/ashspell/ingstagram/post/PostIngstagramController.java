@@ -2,6 +2,7 @@ package com.ashspell.ingstagram.post;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ashspell.ingstagram.post.bo.PostIngstagramBO;
-import com.ashspell.ingstagram.post.model.PostIngstagram;
+import com.ashspell.ingstagram.post.model.PostDetail;
+
 
 @Controller
 @RequestMapping("/ingstagram")
@@ -30,7 +32,7 @@ public class PostIngstagramController {
 		HttpSession session = request.getSession();
 		int userId = (Integer) session.getAttribute("userId");
 		
-		List<PostIngstagram> postList = postingstagramBO.getPostList(userId);
+		List<PostDetail> postList = postingstagramBO.getPostList(userId);
 		
 		model.addAttribute("postList", postList);
 		
