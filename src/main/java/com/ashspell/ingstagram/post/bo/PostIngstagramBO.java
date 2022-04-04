@@ -72,8 +72,27 @@ public class PostIngstagramBO {
 		
 		public int deletePost(int postId, int userId) {
 			
-			Post post = this.getPosts(userId);
+			
+
+			// postId 로 Post 객체 얻어 오기 
+			PostIngstagram post = postingstagramDAO.selectPost(postId);
+			
+			if(post.getUserId() == userId) {
+				// 파일 삭제
+				FileManagerService.removeFile(post.getFilePath());
+				
+				// 댓글 삭제
+				commentBO.deleteCommentByPostId(postId);
+				
+				// 좋아요 삭제
+				likeBO.deleteLikeByPostId(postId);
+				
+				return postingstagramDAO.deletePost(postId);
+			}
+			
+			return 0;
 		}
+	}
 		
 		
-}
+

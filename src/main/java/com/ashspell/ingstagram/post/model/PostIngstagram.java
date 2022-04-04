@@ -5,7 +5,8 @@ import java.sql.Date;
 public class PostIngstagram {
 	
 	private int id;
-	private String imagePath;
+	private int userId;
+	private String filePath;
 	private String content;
 	private String userName;
 	private Date createdAt;
@@ -19,13 +20,21 @@ public class PostIngstagram {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getImagePath() {
-		return imagePath;
+	
+	public int getUserId() {
+		return userId;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
+	
 
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public String getContent() {
 		return content;
 	}

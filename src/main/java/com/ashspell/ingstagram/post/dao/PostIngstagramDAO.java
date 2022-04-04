@@ -14,14 +14,17 @@ public interface PostIngstagramDAO {
 	
 	public int postUser(
 			@Param("id") int id,
-			@Param("imagePath") String imagePath,
+			@Param("filePath") String filePath,
 			@Param("userName") String userName,
 			@Param("content") String content
 			);
 		
 	public List<PostIngstagram> selectPostList();
 		
-
+	public int deletePost(
+			@Param("postId") int postId);
+	
+	public PostIngstagram selectPost(@Param("postId") int postId);
 
 	
 	

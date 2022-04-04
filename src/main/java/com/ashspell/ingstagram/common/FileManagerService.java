@@ -69,4 +69,47 @@ public class FileManagerService {
 		
 		
 	}
-}
+		// 파일 삭제 
+		public static boolean removeFile(String filePath) {
+			
+			if(filePath == null) {
+				logger.error("FileManagerService-removeFile : 파일 없음");
+				
+				return false;
+			}
+			
+			
+			String realFilePath = FILE_UPLOAD_PATH + filePath.replace("/images/", "");
+			
+			// 파일 삭제 
+			Path path = Paths.get(realFilePath);
+			// 파일이 있는지 확인
+			if(Files.exists(path)) {
+				try {
+					Files.delete(path);
+				} catch (IOException e) {
+					logger.error("FileManagerService-removeFile : 파일 삭제 실패");
+					e.printStackTrace();
+					return false;
+				}
+			}
+			
+			
+			path = path.getParent();
+			
+			// 디렉토리 존재 여부 확인
+			if(Files.exists(path)) {
+				try {
+					Files.delete(path);
+				} catch (IOException e) {
+					logger.error("FileManagerService-removeFile : 디렉토리 삭제 실패");
+					e.printStackTrace();
+					return false;
+				}
+			}
+			return true;
+		}
+
+		
+	}
+

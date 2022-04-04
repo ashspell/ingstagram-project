@@ -50,7 +50,7 @@ public class LikeRestController {
 			HttpServletRequest request) {
 			
 		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute(userId);
+		int userId = (Integer)session.getAttribute("userId");
 		
 		int count = likeBO.unlike(postId, userId);
 		

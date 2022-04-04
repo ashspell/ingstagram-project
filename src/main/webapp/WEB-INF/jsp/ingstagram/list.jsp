@@ -53,12 +53,11 @@
 					
 						
 					</div>
-					<!--이미지 -->
+				
 					<div>
-						<img src="${PostIngstagram.imagePath }" class="w-100 imageClick">
+						<img src="${PostIngstagram.filePath }" class="w-100 imageClick">
 					</div>
 					
-					<!-- 좋아요 -->
 					<div class="m-2">
 						<c:choose>
 							<c:when test="${postDetail.like }">
@@ -74,25 +73,25 @@
 						</c:choose>
 						<a href="#" class="likeBtn" data-post-id="${PostIngstagram.id }"><i class="bi bi-heart heart-icon text-dark"></i></a>
 						
-						<span class="middle-size ml-1"> 좋아요 11개 </span>
+						<span class="middle-size ml-1"> 좋아요 1개 </span>
 					</div>
 					
-					<!--  content -->
+					
 					<div class="middle-size m-2">
 						<b>${PostIngstagram.userName }</b> ${PostIngstagram.content }
 					</div>
 					
-					<!--  댓글 -->
+				
 					
 					<div class="mt-2">
 						<div class=" border-bottom m-2">
-							<!-- 댓글 타이틀 -->
+					
 							<div  class="middle-size">
 								댓글
 							</div>
 						</div>
 						
-						<!--  댓글  -->
+						
 						<div class="middle-size m-2">
 							
 							<c:forEach var = "comment" items = "${postDetail.commentList }">							
@@ -102,16 +101,15 @@
 							</c:forEach>
 
 						</div>
-						<!--  댓글  -->
 						
-						<!-- 댓글 입력 -->
+						
 						<div class="d-flex mt-2 border-top">
 							<input type="text" class="form-control border-0" id="commentInput${postDetail.PostIngstagram.id }">
 							<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.PostIngstagram.id }">게시</button>
 						</div>
-						<!-- 댓글 입력 -->
+					
 					</div>
-					<!--  댓글 -->
+					
 				</div>
 				</c:forEach>		
 			</div>	
@@ -120,7 +118,6 @@
 	</div>
 	
 	
-	<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   			Launch demo modal
 		</button>
